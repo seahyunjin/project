@@ -1,0 +1,65 @@
+from tkinter import * # Import tkinter
+from PIL import ImageTk
+import math
+import datetime
+import webbrowser
+import tkinter as tk
+import os
+from collections import Counter
+from tkinter import messagebox
+class WidgetsDemo:
+    def __init__(self):
+        window = Tk() 
+        window.title("epl 경기시간 프로그램") 
+        window.geometry("700x500")
+
+        
+        label = Label(window)
+        img = PhotoImage(file = "C:/Users/seahe/Desktop/pythonproject/epl2.png", master = window)
+        img.subsample(15)
+        label.config(image = img)
+        label.pack()
+
+        frame1 = Frame(window) 
+        frame1.pack()
+        label = Label(frame1, text = "경기날짜를 입력해주세요: ")
+        self.name = IntVar()
+        entryName = Entry(frame1, textvariable = self.name) 
+        btGetName = Button(frame1, text = "경기 시작시간 가져오기", command = self.processButton)
+        message = Message(frame1, text = "경기 날짜를 가져올 때는 년,월,일 순서로 써주세요")
+        aName = Button(frame1,text= "중계 채널로 이동하기", command = self.sports1,fg='red',bg='skyblue')
+        bName = Button(frame1,text= "EPL 순위 확인하기", command = self.sports2,fg='red',bg='skyblue')
+        aName.grid(row = 3, column = 1)
+        bName.grid(row = 3, column = 2)
+        label.grid(row = 1, column = 1)
+        entryName.grid(row = 1, column = 2)
+        btGetName.grid(row = 1, column = 3)
+        message.grid(row = 1, column = 4)
+        
+        # Add a text
+        text = Text(window) 
+        text.pack()
+        text.insert(END, "경기 날짜를 가져올 때는 년,월,일 순서로 써주세요!! ")
+        text.insert(END, "Ex) 2020년 10월 16일 경기이면 20201016 이렇게 입력해주세요. ")
+        text.insert(END, "이 프로그램의 경기 시간은 epl 프리미어리그 2020~2021 경기 시간입니다 그외에 다른 년도 경기 시간을 불러올 수 없습니다.")
+        text.insert(END, "                                                                                           ")
+        text.insert(END, "하늘색 버튼을 누르면 실시간 경기를 보거나 EPL 순위를 확인 할 수 있습니다.")
+        
+
+        window.mainloop() 
+
+    
+    def processButton(self):
+        if self.name.get()==20201016:
+            msg = messagebox.showinfo("경기시간","오늘은 경기가 있습니다!!" )
+        elif self.name.get()==20201124:
+            msg = messagebox.showinfo("경기시간","오늘은 새벽 2시 30분에 번리 VS 펠리스, 새벽 5시에 울버햄튼 VS 사우샘스턴 경기가 있습니다." )
+        else:
+            msg = messagebox.showinfo("경기시간","오늘은 경기가 없습니다!!" )
+    def sports1(self):
+        webbrowser.open("https://www.spotvnow.co.kr/intro")
+    def sports2(self):
+        webbrowser.open("https://www.premierleague.com/tables")
+
+
+WidgetsDemo()
