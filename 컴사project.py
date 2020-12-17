@@ -11,11 +11,11 @@ class WidgetsDemo:
     def __init__(self):
         window = Tk() 
         window.title("epl 경기시간 프로그램") 
-        window.geometry("700x500")
+        window.geometry("800x700")
         window.configure(bg="steelblue")
         
         label = Label(window)
-        img = PhotoImage(file = "C:/Users/seahe/Desktop/pythonproject/epl2.png", master = window)
+        img = PhotoImage(file = "C:/Users/seahe/Desktop/pythonproject/eplf.png", master = window)
         img.subsample(15)
         label.config(image = img)
         label.pack()
